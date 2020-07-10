@@ -8,18 +8,10 @@ class Auth {
     return user != null ? User(uid: user.uid) : null;
   }
 
-  // methode qui ecoute L'autentification pour savoir si on est co ou pas
-
   Stream<User> get user {
-    return _auth
-        .onAuthStateChanged // cella nous renvoiras des donne de FireBase user
+    return _auth.onAuthStateChanged
         .map((FirebaseUser user) => userFromFireBase(user));
-    /* cella pour renvoyer les meme donne
-   sous le format user Que nous avon difinit .  
-   ps on change le type de donne du strem de FireBaseUser a User */
   }
-
-  // methode pour se conecter en anonime
 
   Future singInAnonimous() async {
     try {
@@ -35,8 +27,6 @@ class Auth {
     }
   }
 
-  // methode pour se conecter par email ..
-
   Future singInEmail(String email, String password) async {
     try {
       AuthResult resoltEmail = await _auth.signInWithEmailAndPassword(
@@ -51,7 +41,6 @@ class Auth {
     }
   }
 
-  // methode pour s'enregistre par email ..
   Future<User> singUpEmail(String email, String password) async {
     try {
       AuthResult result = await _auth.createUserWithEmailAndPassword(
@@ -65,7 +54,6 @@ class Auth {
       return null;
     }
   }
-  // SING OUT
 
   Future singOut() async {
     try {

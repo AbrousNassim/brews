@@ -19,8 +19,6 @@ class DatabasseService {
     });
   }
 
-  /// teste  Future updateUserData(String sugar, String name, int strength) async {
-
   // userData from SnapShote
   UserData _userDataFromSnapShot(DocumentSnapshot snapshot) {
     return UserData(
@@ -50,8 +48,6 @@ class DatabasseService {
   //get user doc stream
   Stream<UserData> get getUserData {
     return browCollection.document(uid).snapshots().map(_userDataFromSnapShot);
-    // .map(_userDataFromSnapShot); Cette Partie transphorme les donne du Snapshote
-    //en done custom class Userdata       c presque le meme fonctionement que json.convert
   }
 
   void sup() {
